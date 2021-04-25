@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 data[2]=(String) spinner.getSelectedItem();
                 savedata(data);
                 System.out.println(data[0]+data[1]+data[2]);
-                myHttp(data[0],data[1],data[2]);
+                myHttp(data);
             }
         });
 
@@ -166,8 +166,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    void myHttp(String username,String password,String service) {
-        String encodeService = encode(encode(service));
+    void myHttp(String[] data) {
+        String encodeService = encode(encode(data[2]));
         //创建OkHttpClient对象
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -177,12 +177,12 @@ public class MainActivity extends AppCompatActivity {
         //post方式提交的数据
         String queryString = "wlanuserip=57d35c239b2324316cd24c6e51f95581&wlanacname=86aeba9fa75c3397517ce58fe6aca3a1&ssid=&nasip=4826f7b7351dd62c90efb453f599d425&snmpagentip=&mac=511fa98d409af714ebee766c3186de09&t=wireless-v2&url=2c0328164651e2b4f13b933ddf36628bea622dedcc302b30&apmac=&nasid=86aeba9fa75c3397517ce58fe6aca3a1&vid=0876c30aa757a4d0&port=5dc4946d64dba368&nasportid=5b9da5b08a53a540de3a39287dd9a647b4e8dc0881e46769a6625c1012b5c045&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false";
         FormBody formBody = new FormBody.Builder()
-                .add("userId", username)
-                .add("password", password)
+                .add("userId", data[0])
+                .add("password", data[1])
                 .add("service", encodeService)
                 .add("queryString", queryString)
                 .build();
-        String params = "userId="+username+"&password="+username+"&service="+encodeService+"&queryString=wlanuserip%253D57d35c239b2324316cd24c6e51f95581%2526wlanacname%253D86aeba9fa75c3397517ce58fe6aca3a1%2526ssid%253D%2526nasip%253D4826f7b7351dd62c90efb453f599d425%2526snmpagentip%253D%2526mac%253D511fa98d409af714ebee766c3186de09%2526t%253Dwireless-v2%2526url%253D2c0328164651e2b4f13b933ddf36628bea622dedcc302b30%2526apmac%253D%2526nasid%253D86aeba9fa75c3397517ce58fe6aca3a1%2526vid%253D0876c30aa757a4d0%2526port%253D5dc4946d64dba368%2526nasportid%253D5b9da5b08a53a540de3a39287dd9a647b4e8dc0881e46769a6625c1012b5c045&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false";
+        String params = "userId="+data[0]+"&password="+data[1]+"&service="+encodeService+"&queryString=wlanuserip%253D57d35c239b2324316cd24c6e51f95581%2526wlanacname%253D86aeba9fa75c3397517ce58fe6aca3a1%2526ssid%253D%2526nasip%253D4826f7b7351dd62c90efb453f599d425%2526snmpagentip%253D%2526mac%253D511fa98d409af714ebee766c3186de09%2526t%253Dwireless-v2%2526url%253D2c0328164651e2b4f13b933ddf36628bea622dedcc302b30%2526apmac%253D%2526nasid%253D86aeba9fa75c3397517ce58fe6aca3a1%2526vid%253D0876c30aa757a4d0%2526port%253D5dc4946d64dba368%2526nasportid%253D5b9da5b08a53a540de3a39287dd9a647b4e8dc0881e46769a6625c1012b5c045&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false";
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=utf-8"),
                 params);
         Map<String, String> h = new HashMap<String, String>();
