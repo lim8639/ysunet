@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,9 +9,10 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="154dp"
-        android:layout_height="67dp"
-        android:text="信息展示："
+        android:layout_width="101dp"
+        android:layout_height="59dp"
+        android:text="状态："
+        android:gravity="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,11 +23,12 @@
 
     <TextView
         android:id="@+id/info"
-        android:layout_width="246dp"
-        android:layout_height="50dp"
-        android:text=""
-        android:textColor="@color/white"
-        android:textSize="30sp"
+        android:layout_width="286dp"
+        android:layout_height="57dp"
+        android:text="xxx中国移动在线"
+        android:gravity="center"
+        android:textColor="@color/Info"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/text"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +37,8 @@
         android:id="@+id/user_tip"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text"
-        android:text="学号"
+        android:text="学号："
+        android:gravity="center"
         android:textSize="30sp"
         android:layout_width="100dp"
         android:layout_height="50dp"/>
@@ -49,8 +53,9 @@
         android:id="@+id/pwd_tip"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_tip"
-        android:text="密码"
+        android:text="密码："
         android:textSize="30sp"
+        android:gravity="center"
         android:layout_width="100dp"
         android:layout_height="50dp"/>
 
@@ -65,7 +70,8 @@
         android:id="@+id/service_tip"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pwd"
-        android:text="运营商"
+        android:text="服务："
+        android:gravity="center"
         android:textSize="30sp"
         android:layout_width="100dp"
         android:layout_height="50dp"/>

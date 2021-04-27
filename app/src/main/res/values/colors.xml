@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lvse">#36E33D</color>
+    <color name="Info">#74B877</color>
+    <color name="warn">#DC1203</color>
 </resources>
