@@ -43,20 +43,23 @@ public class MainActivity extends AppCompatActivity {
     TextView textView = null;
     EditText user = null;
     EditText pwd = null;
-    String userIndex  = null;
     TextView showInFo = null;
+
+    // 保存数据
     String []data =new String[5];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+         // 初始化下拉菜单
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-    // Create an ArrayAdapter using the string array and a default spinner layout
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.planets_array, android.R.layout.simple_spinner_item);
-    // Specify the layout to use when the list of choices appears
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-     // Apply the adapter to the spinner
+        // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -65,21 +68,23 @@ public class MainActivity extends AppCompatActivity {
                data[2]= text;
                data[4] = String.valueOf(position);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
+
+        // 初始化组件
         button = this.findViewById(R.id.btn);
         button2 = this.findViewById(R.id.btn_logout);
         textView = this.findViewById(R.id.text);
         showInFo = this.findViewById(R.id.info);
-
         user = this.findViewById(R.id.user);
         pwd = this.findViewById(R.id.pwd);
 
+
+        //表单数据回显
         String []shareData =  getData();
         if ("null".equals(shareData[0])){
             spinner.setSelection(2,true);
@@ -90,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         getUserInFo();
-
+        // 初始化登录按钮
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        // 注销按钮
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
                                             showInFo.setTextColor(Color.rgb(25,255,2));
                                         }else {
                                             showInFo.setTextColor(Color.rgb(255,2,2));
-                                            result = "未登录或者获取失败";
+                                            result = "当前账号未登录";
                                         }
                                         showInFo.setText(result);
 
@@ -354,6 +359,9 @@ public class MainActivity extends AppCompatActivity {
                                         JSONObject jsonObject = new JSONObject(re);
                                         String  result = jsonObject.get("result").toString();
                                         showInFo.setText(result);
+                                        showInFo.setTextColor(Color.rgb(0,255,0));
+
+
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
