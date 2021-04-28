@@ -37,6 +37,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+
 public class MainActivity extends AppCompatActivity {
     Button button = null;
     Button button2 = null;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     EditText user = null;
     EditText pwd = null;
     TextView showInFo = null;
+
+
 
     // 保存数据
     String []data =new String[5];
